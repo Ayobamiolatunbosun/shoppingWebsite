@@ -1,18 +1,42 @@
-*{
-  margin: 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+:root {
+  --ink: #20231f;
+  --muted: #777a73;
+  --green: #355a45;
+  --green-dark: #294536;
+  --line: #e6e5df;
+  --surface: #f6f5f0;
+  --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: #fff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'poppins';
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: #fff; }
+button, input, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.page-content { flex: 1; }
+.eyebrow { color: var(--green); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 18px; border: 0; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .2s ease, transform .2s ease; }
+.button:hover { transform: translateY(-1px); }
+.button-primary { background: var(--green); color: white; }
+.button-primary:hover { background: var(--green-dark); }
+.not-found { display: flex; min-height: 50vh; flex-direction: column; justify-content: center; align-items: flex-start; max-width: 900px; margin: auto; padding: 48px 28px; }
+.not-found h1 { margin: 8px 0; font: 500 clamp(38px, 5vw, 58px) var(--font-display); letter-spacing: -.04em; }
+.not-found > p:not(.eyebrow) { margin: 0 0 24px; color: var(--muted); }
+.not-found .button { padding: 0 20px; }
+::selection { background: #dce8df; color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }

@@ -1,126 +1,68 @@
-// import React from 'react';
-// import './ProductDisplay.css';
-// import star_icon from '../Assets/star_icon.png';
-// import star_dull_icon from '../Assets/star_dull_icon.png';
-
-// const ProductDisplay = ({ product }) => {
-//   // Example function to render star ratings dynamically
-//   const renderStars = (rating) => {
-//     let stars = [];
-//     for (let i = 0; i < 5; i++) {
-//       stars.push(
-//         <img src={i < rating ? star_icon : star_dull_icon} alt={`Rating Star ${i < rating ? 'filled' : 'empty'}`} key={i} />
-//       );
-//     }
-//     return stars;
-//   };
-
-//   return (
-//     <div className='product-display'>
-//       <div className="product-display-left">
-//         <div className="product-display-img-list">
-//           {/* Assuming product.images is an array of image URLs */}
-//           {product.images.map((img, index) => (
-//             <img src={img} alt={`${product.name} view ${index + 1}`} key={index} />
-//           ))}
-//         </div>
-//         <div className="product-display-img">
-//           <img className='product-display-main-img' src={product.image} alt={product.name} />
-//         </div>
-//       </div>
-//       <div className="product-display-right">
-//         <h1>{product.name}</h1>
-//         <div className="product-display-right-stars">
-//           {renderStars(product.rating)}
-//           <p>({product.reviews})</p>
-//         </div>
-//         <div className="product-display-right-prices">
-//           <div className="product-display-right-price-old">${product.oldPrice}</div>
-//           <div className="product-display-right-price-new">${product.newPrice}</div>
-//         </div>
-//         <p className="product-display-right-description">{product.description}</p>
-//         <div className="product-display-right-sizes">
-//           <h2>Select Size</h2>
-//           <div className="sizes-container">
-//             {product.sizes.map((size, index) => (
-//               <div key={index}>{size}</div>
-//             ))}
-//           </div>
-//         </div>
-//         <button>ADD TO CART</button>
-//         <p className='product-display-right-category'><span>Category:</span> {product.categories.join(', ')}</p>
-//         <p className='product-display-right-tags'><span>Tags:</span> {product.tags.join(', ')}</p>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default ProductDisplay;
-
-
-
-
-
-
-
-
-
-
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './ProductDisplay.css'
+import { ShopContext } from '../../context/ShopContext'
 import star_icon from '../Assets/star_icon.png'
 import star_dull_icon from '../Assets/star_dull_icon.png'
 
+const ProductDisplay = ({ product }) => {
+  const { addToCart } = useContext(ShopContext)
+  const [selectedSize, setSelectedSize] = useState('')
+  const [message, setMessage] = useState('')
+  const sizes = ['XS', 'S', 'M', 'L', 'XL']
 
-const ProductDisplay = (props) => {
-    const {product} = props;
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      setMessage('Choose a size to add this piece to your bag.')
+      return
+    }
+    addToCart(product.id, selectedSize)
+    setMessage(`${product.name} · size ${selectedSize} added to your bag.`)
+  }
+
   return (
-    <div className='productdisplay'>
+    <section className="productdisplay">
       <div className="productdisplay-left">
-        <div className="productdisplay-img-list">
-            <img src={product.image} alt="" />
-            <img src={product.image} alt="" />
-            <img src={product.image} alt="" />
-            <img src={product.image} alt="" />
+        <div className="productdisplay-img-list" aria-hidden="true">
+          <img src={product.image} alt="" />
+          <img src={product.image} alt="" />
+          <img src={product.image} alt="" />
         </div>
-
-        
         <div className="productdisplay-img">
-            <img className='productdisplay-main-img' src={product.image} alt="" />
+          <img className="productdisplay-main-img" src={product.image} alt={product.name} />
         </div>
       </div>
       <div className="productdisplay-right">
+        <p className="eyebrow">{product.category === 'kid' ? 'LITTLE ONES' : `THE ${product.category.toUpperCase()} EDIT`}</p>
         <h1>{product.name}</h1>
-        <div className="productdisplay-right-star">
-            <img src={star_icon} alt="" />
-            <img src={star_icon} alt="" />
-            <img src={star_icon} alt="" />
-            <img src={star_icon} alt="" />
-            <img src={star_dull_icon} alt="" />
-            <p>(130)</p>
+        <div className="productdisplay-right-star" aria-label="Rated 4 out of 5">
+          {[0, 1, 2, 3, 4].map((star) => <img src={star < 4 ? star_icon : star_dull_icon} alt="" key={star} />)}
+          <span>4.0 <span className="review-count">(130 reviews)</span></span>
         </div>
         <div className="productdisplay-right-prices">
-            <div className="productdisplay-right-price-old">${product.old_price}</div>
-            <div className="productdisplay-right-price-new">${product.new_price}</div>
+          <span className="productdisplay-right-price-new">${Number(product.new_price).toFixed(2)}</span>
+          <span className="productdisplay-right-price-old">${Number(product.old_price).toFixed(2)}</span>
+          <span className="product-discount">A little less, just as lovely</span>
         </div>
-        <div className="productdisplay-right-description">
-            A lightweight, usually knitted, pullover shirt, close-fitting and ??? a round necklace and short sleeves, worn as an undershirt or outer garment.
-        </div>
+        <p className="productdisplay-right-description">Meet your new favorite. Thoughtfully chosen for everyday comfort, easy styling, and the moments that make a good outfit feel like you.</p>
         <div className="productdisplay-right-size">
-            <h1>Select Size</h1>
-            <div className="productdisplay-right-size">
-                <div>S</div>
-                <div>M</div>
-                <div>L</div>
-                <div>XL</div>
-                <div>XX1</div>
-            </div>
+          <h2>Choose your size <span>Size guide</span></h2>
+          <div className="product-size-options">
+            {sizes.map((size) => (
+              <button type="button" className={selectedSize === size ? 'size-option selected' : 'size-option'} onClick={() => { setSelectedSize(size); setMessage('') }} aria-pressed={selectedSize === size} key={size}>{size}</button>
+            ))}
+          </div>
         </div>
-        <button>ADD TO CART</button>
-        <p className='productdisplay-right-category'><span>Category :</span>Women , T-Shirt, Crop Top</p>
-        <p className='productdisplay-right-category'><span>Tags :</span>Modern , Latest</p>
+        <button className="button button-primary product-add-button" type="button" onClick={handleAddToCart}>Add to bag <span aria-hidden="true">→</span></button>
+        <p className="product-feedback" role="status">{message}</p>
+        <div className="product-details">
+          <p><span>Category</span>{product.category === 'kid' ? 'Kidswear' : `${product.category.charAt(0).toUpperCase()}${product.category.slice(1)}wear`}</p>
+          <p><span>Shipping</span>Complimentary on orders over $100</p>
+          <p><span>Returns</span>Easy returns within 30 days</p>
+        </div>
+        <Link className="product-back-link" to={`/${product.category === 'kid' ? 'kids' : `${product.category}s`}`}>← Back to {product.category === 'kid' ? 'kids' : product.category}</Link>
       </div>
-    </div>
+    </section>
   )
 }
 

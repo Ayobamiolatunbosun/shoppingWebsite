@@ -5,15 +5,14 @@ import { Link } from 'react-router-dom'
 const Item = (props) => {
   return (
     <div className='item'>
-        <Link to={`/product/${props.id}`} ><img src={props.image} alt=""/></Link>
-        <p>{props.name}</p>
+        <Link className="item-image-link" to={`/product/${props.id}`} aria-label={`View ${props.name}`}>
+          <img src={props.image} alt={props.name}/>
+          <span className="item-quick-view">View details <span aria-hidden="true">↗</span></span>
+        </Link>
+        <Link className="item-name" to={`/product/${props.id}`}>{props.name}</Link>
         <div className="item-prices">
-            <div className="item-price-new">
-                ${props.new_price}
-            </div>
-            <div className="item-price-old">
-                ${props.old_price}
-            </div>
+            <span className="item-price-new">${Number(props.new_price).toFixed(2)}</span>
+            <span className="item-price-old">${Number(props.old_price).toFixed(2)}</span>
         </div>
       
     </div>

@@ -1,5 +1,11 @@
 # Getting Started with Create React App
 
+## Public website
+
+The storefront is published at https://ayobamiolatunbosun.github.io/shoppingWebsite/.
+GitHub Pages deploys the site automatically after pushes to `main` or
+`ayobamiolatunbosun-complete-shopping-website`.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

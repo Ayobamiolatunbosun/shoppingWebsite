@@ -1,68 +1,29 @@
-.loginsignup{
-    width: 100%;
-    height: 90vh;
-    background: #fce3fe;
-    padding-top: 100px;
-}
-
-.loginsignup-container{
-    width: 580px;
-    height: 600px;
-    background: white;
-    margin: auto;
-    padding: 40px 60px;
-}
-
-.loginsignup-container h1{
-    margin: 20px 0px;
-}
-
-.loginsignup-fields{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.loginsignup-fields input{
-    height: 72px;
-    width: 100%;
-    padding-left: 20px;
-    border: 1px solid #c9c9c9;
-    outline: none;
-    color: #5c5c5c;
-    font-size: 18px;
-}
-
-.loginsignup-container button{
-    width: 580px;
-    height: 72px;
-    color: white;
-    background: red;
-    margin-top: 30px;
-    border: none;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.loginsignup-login{
-    margin-top: 20px;
-    color: #5c5c5c;
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.loginsignup-login span{
-    color: #ff4141;
-    font-weight: 600;
-}
-
-.loginsignup-agree{
-    display: flex;
-    align-items: center;
-    margin-top: 25px;
-    gap: 20px;
-    color: #5c5c5c;
-    font-size: 18px;
-    font-weight: 500;
+.loginsignup { display: grid; grid-template-columns: minmax(0, .9fr) minmax(380px, 1fr); gap: 8vw; align-items: center; max-width: 1180px; min-height: 610px; margin: 30px auto 100px; padding: 48px; background: var(--surface); }
+.loginsignup-aside { max-width: 420px; }
+.loginsignup-aside h1 { margin: 18px 0; font: 500 clamp(42px, 5vw, 64px)/1.02 var(--font-display); letter-spacing: -.05em; }
+.loginsignup-aside h1 span { color: var(--green); }
+.loginsignup-aside > p:not(.eyebrow) { margin-bottom: 30px; color: var(--muted); line-height: 1.7; }
+.loginsignup-aside > a { color: var(--ink); font-size: 13px; }
+.loginsignup-container { width: 100%; max-width: 440px; padding: 36px; background: white; }
+.loginsignup-container h2 { margin: 12px 0 8px; font: 500 34px var(--font-display); letter-spacing: -.03em; }
+.account-intro { margin-bottom: 24px; color: var(--muted); font-size: 13px; }
+.loginsignup-fields { display: flex; flex-direction: column; gap: 16px; }
+.loginsignup-fields label { display: flex; flex-direction: column; gap: 8px; color: var(--ink); font-size: 12px; font-weight: 500; }
+.loginsignup-fields input { box-sizing: border-box; width: 100%; height: 48px; padding: 0 14px; border: 1px solid var(--line); outline: none; color: var(--ink); font: inherit; font-weight: 400; }
+.loginsignup-fields input:focus { border-color: var(--green); box-shadow: 0 0 0 2px rgb(46 91 69 / 10%); }
+.loginsignup-agree { display: flex; gap: 9px; align-items: center; margin: 18px 0; color: var(--muted); font-size: 11px; }
+.loginsignup-agree input { accent-color: var(--green); }
+.account-submit { width: 100%; justify-content: space-between; padding: 0 18px; margin-top: 20px; }
+.loginsignup-login { display: flex; justify-content: center; gap: 5px; margin-top: 20px; color: var(--muted); font-size: 12px; }
+.loginsignup-login button { padding: 0; border: 0; background: none; color: var(--green); font: inherit; font-weight: 600; cursor: pointer; }
+.account-success { padding: 18px 0; text-align: center; }
+.account-success > span { display: inline-flex; width: 46px; height: 46px; align-items: center; justify-content: center; border-radius: 50%; background: #edf4ee; color: var(--green); font-size: 22px; }
+.account-success h2 { margin-top: 20px; }
+.account-success p { margin: 10px 0 24px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.account-success .button { padding: 0 24px; }
+@media (max-width: 760px) {
+  .loginsignup { grid-template-columns: 1fr; gap: 30px; min-height: 0; margin: 16px 18px 64px; padding: 28px 18px; }
+  .loginsignup-aside { max-width: none; }
+  .loginsignup-aside h1 { font-size: 42px; }
+  .loginsignup-container { box-sizing: border-box; max-width: none; padding: 28px 20px; }
 }

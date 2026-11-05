@@ -1,0 +1,22 @@
+.nigeria-style { max-width: 1280px; margin: 0 auto 100px; padding: 66px 40px 0; border-top: 1px solid var(--line); }
+.nigeria-style-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 28px; }
+.nigeria-style-heading .eyebrow { margin-bottom: 12px; }
+.nigeria-style-heading h2 { margin: 0; color: var(--ink); font: 500 clamp(32px, 4vw, 44px)/1.1 var(--font-display); letter-spacing: -.04em; }
+.nigeria-style-heading > div > p:last-child { margin: 11px 0 0; color: var(--muted); font-size: 13px; }
+.nigeria-style-mark { display: flex; width: 52px; height: 52px; align-items: center; justify-content: center; border: 1px solid #d5d9cf; border-radius: 50%; color: var(--green); font-size: 9px; font-weight: 600; line-height: 1.4; text-align: center; }
+.nigeria-style-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.nigeria-style-card { min-width: 0; }
+.nigeria-style-image { position: relative; display: block; overflow: hidden; background: #e7e5df; }
+.nigeria-style-image img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%; transition: transform .45s ease; }
+.nigeria-style-image:hover img { transform: scale(1.035); }
+.nigeria-style-image-label { position: absolute; right: 9px; bottom: 9px; left: 9px; display: flex; justify-content: space-between; padding: 11px 12px; background: rgb(255 255 255 / 94%); color: var(--ink); font-size: 10px; }
+.nigeria-style-card h3 { margin: 12px 0 6px; font: 500 16px var(--font-display); }
+.nigeria-style-credit { margin: 0; color: var(--muted); font-size: 9px; line-height: 1.6; }
+.nigeria-style-credit a { color: var(--green); text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 760px) {
+  .nigeria-style { margin-bottom: 60px; padding: 48px 18px 0; }
+  .nigeria-style-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+  .nigeria-style-heading h2 { font-size: 34px; }
+  .nigeria-style-heading > div > p:last-child { max-width: 300px; line-height: 1.6; }
+  .nigeria-style-mark { width: 42px; height: 42px; flex: 0 0 auto; }
+}
